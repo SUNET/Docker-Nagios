@@ -1,0 +1,13 @@
+---
+environment_variables:
+  SUNET_NAGIOS4_VERSION: "6.6.6"
+git:
+  branch: master
+triggers:
+  cron: "@daily"
+clean_workspace: true
+script:
+  - echo "Build SUNET customised Nagios4 for CNaaS"
+builders:
+  - docker
+docker_name: sunet/docker-nagios4-cnaas
