@@ -165,21 +165,21 @@ RUN cd /tmp                                                                  && 
     make clean                                                               && \
     cd /tmp && rm -Rf nrpe
 
-RUN cd /tmp                                                 && \
-    git clone https://github.com/NagiosEnterprises/nsca.git && \
-    cd nsca                                                 && \
-    git checkout $NSCA_TAG                                  && \
-    ./configure                                                \
-        --prefix=${NAGIOS_HOME}                                \
-        --with-nsca-user=${NAGIOS_USER}                        \
-        --with-nsca-grp=${NAGIOS_GROUP}                     && \
-    make all                                                && \
-    cp src/nsca ${NAGIOS_HOME}/bin/                         && \
-    cp src/send_nsca ${NAGIOS_HOME}/bin/                    && \
-    cp sample-config/nsca.cfg ${NAGIOS_HOME}/etc/           && \
-    cp sample-config/send_nsca.cfg ${NAGIOS_HOME}/etc/      && \
-    sed -i 's/^#server_address.*/server_address=0.0.0.0/'  ${NAGIOS_HOME}/etc/nsca.cfg && \
-    cd /tmp && rm -Rf nsca
+#RUN cd /tmp                                                 && \
+#    git clone https://github.com/NagiosEnterprises/nsca.git && \
+#    cd nsca                                                 && \
+#    git checkout $NSCA_TAG                                  && \
+#    ./configure                                                \
+#        --prefix=${NAGIOS_HOME}                                \
+#        --with-nsca-user=${NAGIOS_USER}                        \
+#        --with-nsca-grp=${NAGIOS_GROUP}                     && \
+#    make all                                                && \
+#    cp src/nsca ${NAGIOS_HOME}/bin/                         && \
+#    cp src/send_nsca ${NAGIOS_HOME}/bin/                    && \
+#    cp sample-config/nsca.cfg ${NAGIOS_HOME}/etc/           && \
+#    cp sample-config/send_nsca.cfg ${NAGIOS_HOME}/etc/      && \
+#    sed -i 's/^#server_address.*/server_address=0.0.0.0/'  ${NAGIOS_HOME}/etc/nsca.cfg && \
+#    cd /tmp && rm -Rf nsca
 
 RUN cd /tmp                                                          && \
     git clone https://git.code.sf.net/p/nagiosgraph/git nagiosgraph  && \
