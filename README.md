@@ -3,11 +3,11 @@
 Docker image for Nagios
 
 
-Nagios Core 4.4.8 running on Ubuntu 20.04 LTS with NagiosGraph & NRPE
+Nagios Core 4.4.9 running on Ubuntu 20.04 LTS with NagiosGraph & NRPE
 
 | Product | Version |
 | ------- | ------- |
-| Nagios Core | 4.4.8 |
+| Nagios Core | 4.4.9 |
 | Nagios Plugins | 2.4.1 |
 | NRPE | 4.1.0 |
 | NCPA | 2.4.0 |
