@@ -1,6 +1,4 @@
 ---
-environment_variables:
-  SUNET_NAGIOS4_VERSION: "6.6.6"
 git:
   branch: master
 triggers:
@@ -11,3 +9,5 @@ script:
 builders:
   - docker
 docker_name: sunet/docker-nagios4-cnaas
+docker_tags:
+  - "v4.4.13_sunetbuild"
