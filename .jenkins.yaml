@@ -10,4 +10,4 @@ builders:
   - docker
 docker_name: sunet/docker-nagios4-cnaas
 docker_tags:
-  - "v4.4.13_sunetbuild"
+  - "v4.4.14_sunetbuild"
