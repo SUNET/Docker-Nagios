@@ -17,7 +17,7 @@ ENV NG_NAGIOS_CONFIG_FILE  ${NAGIOS_HOME}/etc/nagios.cfg
 ENV NG_CGI_DIR             ${NAGIOS_HOME}/sbin
 ENV NG_WWW_DIR             ${NAGIOS_HOME}/share/nagiosgraph
 ENV NG_CGI_URL             /cgi-bin
-ENV NAGIOS_BRANCH          nagios-4.5.12
+ENV NAGIOS_BRANCH          nagios-4.5.14
 ENV NAGIOS_PLUGINS_BRANCH  release-2.5
 ENV NRPE_BRANCH            nrpe-4.1.3
 ENV NCPA_BRANCH            v3.3.1
@@ -196,7 +196,6 @@ RUN cd /tmp                                                          && \
 
 RUN cd /opt                                                                         && \
     pip install --break-system-packages pymssql paho-mqtt                           && \
-    pip install argus-api-client                                                    && \
     git clone https://github.com/willixix/naglio-plugins.git     WL-Nagios-Plugins  && \
     git clone https://github.com/JasonRivers/nagios-plugins.git  JR-Nagios-Plugins  && \
     git clone https://github.com/justintime/nagios-plugins.git   JE-Nagios-Plugins  && \
