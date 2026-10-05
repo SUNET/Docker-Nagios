@@ -97,6 +97,12 @@ RUN echo postfix postfix/main_mailer_type string "'Internet Site'" | debconf-set
                                                 && \
     apt-get clean && rm -Rf /var/lib/apt/lists/*
 
+#Configure postfix
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y postfix \
+ && postconf queue_directory \
+ && ls -ld /var/spool/postfix \
+ && postfix check
+
 RUN ( egrep -i "^${NAGIOS_GROUP}"    /etc/group || groupadd $NAGIOS_GROUP    )                         && \
     ( egrep -i "^${NAGIOS_CMDGROUP}" /etc/group || groupadd $NAGIOS_CMDGROUP )
 RUN ( id -u $NAGIOS_USER    || useradd --system -d $NAGIOS_HOME -g $NAGIOS_GROUP    $NAGIOS_USER    )  && \
@@ -239,15 +245,11 @@ RUN mkdir -p -m 0755 /usr/share/snmp/mibs                     && \
     ln -s ${NAGIOS_HOME}/bin/nagios /usr/local/bin/nagios     && \
     download-mibs && echo "mibs +ALL" > /etc/snmp/snmp.conf
 
-
-# Fix for the Postfix chroot configuration step
-RUN mkdir -p /var/spool/postfix/etc && \
-    cp /etc/services /var/spool/postfix/etc/ && \
-    echo "smtp_address_preference = ipv4" >> /etc/postfix/main.cf
-
 RUN sed -i 's,/bin/mail,/usr/bin/mail,' ${NAGIOS_HOME}/etc/objects/commands.cfg  && \
     sed -i 's,/usr/usr,/usr,'           ${NAGIOS_HOME}/etc/objects/commands.cfg
 
+RUN cp /etc/services /var/spool/postfix/etc/ && \
+    echo "smtp_address_preference = ipv4" >> /etc/postfix/main.cf
 
 RUN rm -rf /etc/rsyslog.d /etc/rsyslog.conf
 
