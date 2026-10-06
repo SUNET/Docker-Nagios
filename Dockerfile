@@ -38,6 +38,7 @@ RUN echo postfix postfix/main_mailer_type string "'Internet Site'" | debconf-set
         build-essential                     \
         curl                                \
         dnsutils                            \
+        file                                \
         fping                               \
         gettext                             \
         git                                 \
@@ -61,6 +62,8 @@ RUN echo postfix postfix/main_mailer_type string "'Internet Site'" | debconf-set
         libgd-perl                          \
         libjson-perl                        \
         libldap2-dev                        \
+        libmagic-mgc                        \
+        libmagic1t64                        \
         libmonitoring-plugin-perl           \
         libmariadb-dev                      \
         libnagios-object-perl               \
